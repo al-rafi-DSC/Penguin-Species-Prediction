@@ -1,0 +1,25 @@
+# Virtual environments
+.venv/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Local environment variables
+.env
+
+# Generated model artifacts
+artifacts/*
+!artifacts/.gitkeep
+
+# Build output
+build/
+dist/
+*.egg-info/
+
