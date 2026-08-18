@@ -1,4 +1,9 @@
 {
     "editor.cursorBlinking": "expand",
-    "editor.cursorStyle": "line"
+    "editor.cursorStyle": "line",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#339947",
+        "statusBar.foreground": "#15202b",
+        "sash.hoverBorder": "#339947"
+    }
 }
