@@ -14,6 +14,9 @@ __pycache__/
 # Local environment variables
 .env
 
+# Local Codebase Memory index
+.codebase-memory/
+
 # Generated model artifacts
 artifacts/*
 !artifacts/.gitkeep
@@ -23,5 +26,6 @@ build/
 dist/
 *.egg-info/
 
+# Coverage output
 .coverage
 htmlcov/
