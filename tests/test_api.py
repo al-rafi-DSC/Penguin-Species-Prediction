@@ -1,11 +1,12 @@
-# This is a pytest for the FASTAPI application, Its check the health check and prediction endpoint.
+# Tests for the FastAPI health and prediction endpoints.
 import pytest
 from fastapi.testclient import TestClient
+
 from app.main import app
 
-client=TestClient(app)
+client = TestClient(app)
 
-valid_penguin={
+valid_penguin = {
     "island": "Biscoe",
     "bill_length_mm": 46.1,
     "bill_depth_mm": 14.8,
@@ -14,10 +15,12 @@ valid_penguin={
     "sex": "female",
 }
 
-def test_health_check() ->None:
-    response=client.get("/health")
-    assert response.status_code==200
+
+def test_health_check() -> None:
+    response = client.get("/health")
+    assert response.status_code == 200
     assert "status" in response.json()
+
 
 def test_predict_returns_species_and_probabilities() -> None:
     response = client.post("/predict", json=valid_penguin)

@@ -1,4 +1,4 @@
-# Build the Prediction API 
+# Build the Prediction API
 
 from pathlib import Path
 from typing import Literal
@@ -12,34 +12,34 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 MODEL_PATH = PROJECT_ROOT / "artifacts" / "model.joblib"
 
 if not MODEL_PATH.exists():
-    raise RuntimeError(
-        f"Model not found at {MODEL_PATH} run 'uv run train.py' first"
-    )
+    raise RuntimeError(f"Model not found at {MODEL_PATH} run 'uv run train.py' first")
 
-model=joblib.load(MODEL_PATH)
+model = joblib.load(MODEL_PATH)
 
-app= FastAPI(
+app = FastAPI(
     title="Penguin Species Prediction API",
     description="Predicting penguin species using physical features",
-    version="1.0.0"
+    version="1.0.0",
 )
 
+
 class PenguinFeatures(BaseModel):
-    island: Literal["Biscoe","Dream","Torgersen"]
-    bill_length_mm: float =Field(gt=0)
-    bill_depth_mm: float =Field(gt=0)
-    flipper_length_mm: float =Field(gt=0)
-    body_mass_g: float =Field(gt=0)
-    sex: Literal["male","female"]
+    island: Literal["Biscoe", "Dream", "Torgersen"]
+    bill_length_mm: float = Field(gt=0)
+    bill_depth_mm: float = Field(gt=0)
+    flipper_length_mm: float = Field(gt=0)
+    body_mass_g: float = Field(gt=0)
+    sex: Literal["male", "female"]
+
 
 class PredictionResponse(BaseModel):
-    predicted_species:str
-    probabilities:dict[str,float]
+    predicted_species: str
+    probabilities: dict[str, float]
 
 
 @app.get("/health")
-def health_check() -> dict[str,str]:
-    return {"status":"I am alive Baby"}
+def health_check() -> dict[str, str]:
+    return {"status": "I am alive Baby"}
 
 
 @app.post("/predict", response_model=PredictionResponse)

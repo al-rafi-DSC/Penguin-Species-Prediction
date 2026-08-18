@@ -20,6 +20,4 @@ def test_pipeline_can_train_and_predict() -> None:
     predictions = pipeline.predict(features.head(3))
 
     assert len(predictions) == 3
-    assert set(predictions).issubset(
-        {"Adelie", "Chinstrap", "Gentoo"}
-    )
+    assert set(predictions).issubset({"Adelie", "Chinstrap", "Gentoo"})
